@@ -1,0 +1,25 @@
+<b>
+    <form [formGroup] = "passengerForm" (submit) = "savePassenger()">
+        <table class = "table">
+            <tr><td>Passenger Name :</td><td><input type =text, formControlName = pName>
+                <div class="alert" *ngIf="passengerForm.controls['pName'].dirty && passengerForm.controls['pName'].errors!=null">
+                    <span *ngIf="passengerForm.controls['pName'].errors['required']==true"><small>Passenger Name is required</small>&nbsp;&nbsp;&nbsp;</span>
+                    <span *ngIf="!!passengerForm.controls['pName'].errors['pattern']"><small>Invalid username</small>&nbsp;&nbsp;&nbsp;</span>
+                    <span *ngIf="!!passengerForm.controls['pName'].errors['minlength']"><small>Too small username</small>&nbsp;&nbsp;&nbsp;</span>
+                    <br/>
+                </div></td></tr>
+    <tr><td>Passeneger Age :</td><td><input type =number, formControlName = pAge>
+        <div class="alert" *ngIf="passengerForm.controls['pAge'].dirty && passengerForm.controls['pAge'].errors!=null">
+            <span *ngIf="passengerForm.controls['pAge'].errors['required']==true"><small>Age is required</small>&nbsp;&nbsp;&nbsp;</span>
+            <span *ngIf="!!passengerForm.controls['pAge'].errors['max']"><small>Invalid age</small>&nbsp;&nbsp;&nbsp;</span>
+            <br/>
+        </div></td></tr>
+    <tr><td>Passenger Gender:</td> <td><select name="pGender" id="pGender" formControlName = "pGender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select></td> </tr>
+    <tr><td>Passenger Seat No :</td><td><input type =text, formControlName = pSeatNo></td></tr>
+        </table>
+        <input type = submit class = "btn btn-success" [disabled] = "passengerForm.invalid" value = "Add" style="margin:0px auto; display: block;"/>
+    </form>  
+</b>

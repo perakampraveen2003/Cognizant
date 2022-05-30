@@ -1,0 +1,56 @@
+<br><H3 align="center" style="color:red; font-family: Georgia, 'Times New Roman', Times, serif;">Please fill all the details</H3><br><br>
+<b>
+<form [formGroup] = "bookingForm" (submit) = "sendBookItems()">
+    <table class = "table">
+    <tr><td>Name :</td><td><input type = text, formControlName = UserName>
+      <div class="alert" *ngIf="bookingForm.controls['UserName'].dirty && bookingForm.controls['UserName'].errors!=null">
+        <span *ngIf="bookingForm.controls['UserName'].errors['required']==true"><small>Enter your username</small>&nbsp;&nbsp;&nbsp;</span>
+        <span *ngIf="!!bookingForm.controls['UserName'].errors['pattern']"><small>Invalid username</small>&nbsp;&nbsp;&nbsp;</span>
+        <span *ngIf="!!bookingForm.controls['UserName'].errors['minlength']"><small>Too small username</small>&nbsp;&nbsp;&nbsp;</span>
+        <br/>
+      </div></td></tr>
+    <tr><td>Email :</td><td><input type = email, formControlName = email>
+      <div class="alert" *ngIf="bookingForm.controls['email'].dirty && bookingForm.controls['email'].errors!=null">
+        <span *ngIf="bookingForm.controls['email'].errors['required']==true"><small>email id is required</small>&nbsp;&nbsp;&nbsp;</span>
+         <br/>
+      </div></td></tr>
+    <tr><td>No of seats :</td><td><input type =number, formControlName = noOfSeats></td></tr>
+    <tr><td>Meal Type:</td><td> <select name="mealType" id="mealType" formControlName = "mealType">
+        <option value="Veg">Vegetarian</option>
+        <option value="Non Veg">Non Vegetarian</option>
+      </select></td></tr> 
+    <tr><td>Trip Type:</td> <td><select name="tripType" id="tripType" formControlName = "tripType">
+        <option value="One way">One way</option>
+        <option value="Round trip">Round trip</option>
+      </select></td>
+    </tr>
+    <tr  *ngIf="this.bookingForm.value.tripType==='Round trip'"><td>Return date:</td><td><input type="date" name="rDate" id="rDate" formControlName = "rDate"></td></tr>
+    </table>
+    <div *ngIf = "this.bookingForm.value.noOfSeats > 0">
+      <h4 align="center" style="color: red;">Add Passengers:</h4>
+      <div *ngFor = "let i of counter(this.bookingForm.value.noOfSeats)">
+        <app-passenger></app-passenger>
+      </div>
+    </div>
+    <input type = submit class = "btn btn-success" [disabled] = "bookingForm.invalid" value = "Book Now" style="margin:75px auto; display: block; height: 55px; width: 255px;"/>
+  
+
+    <!-- <br>
+    <div *ngIf = "this.bookingForm.value.noOfSeats > 0">
+    Add Passengers:
+    <br>
+    <li *ngFor = "let i of counter(this.bookingForm.value.noOfSeats)">
+       <form>
+                Name : <input type="text">
+                Age : <input type="number">
+                Gender : <input type="text">
+                Seat No: <input type = "text">
+                <input type = submit>
+       </form>
+    </li>
+    </div> -->
+</form>
+</b>
+<br><br>
+
+

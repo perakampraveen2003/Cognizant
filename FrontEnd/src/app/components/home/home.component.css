@@ -1,0 +1,10 @@
+img{
+    margin: 0px auto;
+    display: block;
+    width: 900px;
+    height:400px
+}
+h1{
+    font-style: oblique;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

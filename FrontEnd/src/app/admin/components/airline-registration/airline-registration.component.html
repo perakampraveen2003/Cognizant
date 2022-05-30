@@ -1,0 +1,45 @@
+<br><br><h3 style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;" align="center">Airline Registration Page</h3>
+<br><br><br>
+<form [formGroup] = "registrationForm" align="center" (submit) = "registerAirline()">
+    <table class = "table" >
+        <tr>
+           <td> <input type = "text" name = "airlineName" id="id1" formControlName = "airlineName" placeholder="Enter Airline Name"> </td>  </tr>
+           <!-- <td> -->
+            <span class="alert" *ngIf="registrationForm.controls['airlineName'].dirty && registrationForm.controls['airlineName'].errors!=null">
+        
+                <span *ngIf="registrationForm.controls['airlineName'].errors['required']==true"><small>Airline name is required</small></span>
+                <span *ngIf="!!registrationForm.controls['airlineName'].errors['minlength']"><small>Airline name should have atleast 10 charactors</small></span>
+        
+                <br/>
+            </span>
+          <!-- </td> -->
+      
+        <tr>
+           <td> <input type = "number" name = "contactNo" id="id1" formControlName = "contactNo" placeholder="Enter Contact Number"></td> </tr>
+           <!-- <td> -->
+            <span class="alert" *ngIf="registrationForm.controls['contactNo'].dirty && registrationForm.controls['contactNo'].errors!=null">
+        
+                <span *ngIf="registrationForm.controls['contactNo'].errors['required']==true"><small>Mobile number is required</small></span>
+                <span *ngIf="!!registrationForm.controls['contactNo'].errors['minlength']"><small>Mobile number should have atleast 10 digits</small></span>
+        
+                <br/>
+            </span>
+          <!-- </td> -->
+       
+        <tr>
+            <td><input type = "text" name = "contactAddress" id="id1" formControlName = "contactAddress" placeholder="Enter Contact Adress"></td></tr>
+            <!-- <td> -->
+                <span class="alert" *ngIf="registrationForm.controls['contactAddress'].dirty && registrationForm.controls['contactAddress'].errors!=null">
+            
+                    <span *ngIf="registrationForm.controls['contactAddress'].errors['required']==true"><small>Address is mandatory</small></span>
+                    <span *ngIf="!!registrationForm.controls['contactAddress'].errors['minlength']"><small>Address should be atleast 5 charactors</small></span>
+            
+                    <br/>
+                </span>
+              <!-- </td> -->
+        <br><input type = "submit"id="id2" style="margin:0px auto; display:block;" [disabled] = "registrationForm.invalid" class = "btn btn-success"/>
+
+    </table>
+</form>
+
+<h2 align="center">{{msg}}</h2>

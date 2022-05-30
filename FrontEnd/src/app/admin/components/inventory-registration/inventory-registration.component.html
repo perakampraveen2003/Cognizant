@@ -1,0 +1,164 @@
+<br><br><h3 style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;" align="center">Inventory Registration Page</h3>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Please fill all the details</small>
+<br>
+<b style="color:black;">
+<form [formGroup] = "inventoryForm" (submit) = "save()" >
+    <table align="center">
+		<tr>
+			<td align='right'><label>Flight Number: </label></td>
+			<td align='left'><input  type = "number" class="col-xs-2"  name ="fNo" formControlName = "fNo">
+			<span class="alert" *ngIf="inventoryForm.controls['fNo'].dirty && inventoryForm.controls['fNo'].errors!=null">
+        
+                <div *ngIf="inventoryForm.controls['fNo'].errors['required']==true"><small>Flight number is required</small></div>
+                <!-- <div *ngIf="!!inventoryForm.controls['fNo'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+                <br/>
+            </span>
+		</td>
+		</tr>
+		<tr>
+			<td align='right'>Airline Name: </td>
+			<td><select id = "airline" name = "airline" formControlName = "airline">
+					<option *ngFor = "let a of airlines" value = "{{a}}">{{a}}</option>
+				</select>
+				<span class="alert" *ngIf="inventoryForm.controls['airline'].dirty && inventoryForm.controls['airline'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['airline'].errors['required']==true"><small>Airline name is required</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td td align='right'>From Place: </td>
+			<td><input type = "text" name ="fPlace" formControlName = "fPlace">
+				<span class="alert" *ngIf="inventoryForm.controls['fPlace'].dirty && inventoryForm.controls['fPlace'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['fPlace'].errors['required']==true"><small>source is required</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>To Place: </td>
+			<td> <input type = "text" name ="tPlace" formControlName = "tPlace">
+				<span class="alert" *ngIf="inventoryForm.controls['tPlace'].dirty && inventoryForm.controls['tPlace'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['tPlace'].errors['required']==true"><small>destnation place is required</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Start Date:  </td>
+			<td><input type = "date" name ="sDate" formControlName = "sDate">
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Start Time: </td>
+			<td>
+				<select id="sTime" name="sTime" formControlName = "sTime">
+					<option *ngFor = "let t of time" value = "{{t}}">{{t}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>End Date: </td>
+			<td><input type = "date" name ="eDate" formControlName = "eDate"></td>
+		</tr>
+		<tr>
+			<td align='right'>End time: </td>
+			<td>
+				<select id="eTime" name="eTime" formControlName = "eTime">
+					<option *ngFor = "let t of time" value = "{{t}}">{{t}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Schedule: </td>
+			<td>
+				<select id = "schedule" name = "schedule" formControlName = "schedule">
+					<option value = "Weekly">Weekly</option>
+					<option value = "Daily">Daily</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Instrument Used: </td>
+			<td><input type = "text" name ="instrument" formControlName = "instrument">
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Total business class seats:</td>
+			<td><input type = "number" name ="bSeats" formControlName = "bSeats">
+				<span class="alert" *ngIf="inventoryForm.controls['bSeats'].dirty && inventoryForm.controls['bSeats'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['bSeats'].errors['required']==true"><small>Please enter business class seats</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Total economy class seats: </td>
+			<td><input type = "number" name ="eSeats" formControlName = "eSeats">
+				<span class="alert" *ngIf="inventoryForm.controls['eSeats'].dirty && inventoryForm.controls['eSeats'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['eSeats'].errors['required']==true"><small>Please enter economy class seats</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Ticket Price: </td>
+			<td><input type = "number" name ="price" formControlName = "price">
+				<span class="alert" *ngIf="inventoryForm.controls['price'].dirty && inventoryForm.controls['price'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['price'].errors['required']==true"><small>price is required</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Total No of rows:  </td>
+			<td><input type = "number" name ="noOfRows" formControlName = "noOfRows">
+				<span class="alert" *ngIf="inventoryForm.controls['noOfRows'].dirty && inventoryForm.controls['noOfRows'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['noOfRows'].errors['required']==true"><small>no of rows required</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td align='right'>Meal Type:</td>
+			<td>
+				<select id = "mealType" name = "mealType" formControlName = "mealType">
+					<option value = "Veg">Vegetarian</option>
+					<option value = "Non Veg">Non Vegetarian</option>
+                </select>
+				<span class="alert" *ngIf="inventoryForm.controls['mealType'].dirty && inventoryForm.controls['mealType'].errors!=null">
+        
+					<div *ngIf="inventoryForm.controls['mealType'].errors['mealType']==true"><small>select meal type option</small></div>
+					<!-- <div *ngIf="!!inventoryForm.controls['airline'].errors['minlength']"><small>Flight number should have atleast 6 digits</small></div> -->
+			
+					<br/>
+				</span>
+			</td>
+		</tr>		
+  </table><br>
+  <input  type = "submit" style = "margin:0px auto;display: block; width: 400px;" [disabled] = "inventoryForm.invalid" class = "btn btn-success">
+</form>
+</b>

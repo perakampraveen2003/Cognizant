@@ -1,0 +1,35 @@
+<br><br>
+<h2 style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;" align="center">Admin Operations</h2>
+<br><br><br>
+<table class = table>
+
+<tr>
+    <td><a style="display:block;" class = "btn btn-success" (click)="addAirline()">Add Airline</a></td>
+    <td><a style="display:block;" class = "btn btn-success" (click)="addInventory()">Add Inventory</a></td></tr>
+</table>
+<br><br>
+<table class = "table">
+<tr>
+    <td><a style="display:grid;" class = "btn btn-success" (click)="showBlock()">Block Airline</a></td>
+    <td><a style="display:block;" class = "btn btn-success" (click)="showUnBlock()">Unblock Airline</a></td>
+</tr>
+</table>
+<br><br><br>
+<div *ngIf = "showBlockDiv">
+    <h3 align="center" style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;">Select the Airline to Block</h3>
+    <table align="center"><tr><td>
+        <select  id="a1" name = "a1" [(ngModel)] = "a1">
+        <option *ngFor= "let a of airlines" name="airline"  value="{{a}}">{{a}}</option>
+      </select></td></tr>
+    </table>
+      <button  class = "btn btn-success" style ="margin:0px auto; display: block;" (click) = "blockAirline()">Block Airline</button>
+
+</div>
+<div *ngIf = "showUnBlockDiv">
+    <h3 align="center" style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;">Select the Airline to UnBlock</h3>
+    <table align="center"><tr><td><select  id="a1"  name="a1" [(ngModel)] = "a1">
+        <option  *ngFor= "let a of airlines" name="airline"  value="{{a}}">{{a}}</option>
+      </select></td></tr></table>
+      <button  class = "btn btn-success" style ="margin:0px auto; display: block;" (click) = "unBlockAirline()">UnBlock Airline</button>
+    
+</div> 

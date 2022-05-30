@@ -1,0 +1,32 @@
+<br><H1 style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;" align="center">Admin Login Page</H1><br><br>
+<form [formGroup]="loginForm" (submit)="authenticate()" >
+    <table align ="center" cellpadding = "10"> 
+    <tr><th>User Name:</th><td><input id = "ip" formControlName="username" type="text" placeholder="Enter User Name"/><br/></td>
+    <td>
+    <span class="alert" *ngIf="loginForm.controls['username'].dirty && loginForm.controls['username'].errors!=null">
+
+        <span *ngIf="loginForm.controls['username'].errors['required']==true"><small>Enter your username</small>&nbsp;&nbsp;&nbsp;</span>
+        <span *ngIf="!!loginForm.controls['username'].errors['pattern']"><small>Invalid username</small>&nbsp;&nbsp;&nbsp;</span>
+        <span *ngIf="!!loginForm.controls['username'].errors['minlength']"><small>user name is too small</small>&nbsp;&nbsp;&nbsp;</span>
+
+        <br/>
+    </span>
+  </td>
+</tr>
+   <tr><th>Password:</th><td> <input formControlName="password" id="ip" type="password" placeholder="Enter Password"/><br/></td>
+   <td><span class="alert" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors!=null">
+
+      <span *ngIf="loginForm.controls['password'].errors['required']==true"><small>password is required</small></span>
+      <span *ngIf="!!loginForm.controls['password'].errors['minlength']"><small>password should altleast 8 charactors</small></span>
+
+      <br/>
+  </span></td>
+</tr>
+  <br>
+  </table>
+  <input type="submit" [disabled]="loginForm.invalid" style="margin: 0px auto; display: block;" class = "btn btn-success"/><br/> 
+</form>
+
+<br><br><br>
+<h3 style = "color: red" *ngIf= "authStatus" align="center">Invalid User</h3>
+

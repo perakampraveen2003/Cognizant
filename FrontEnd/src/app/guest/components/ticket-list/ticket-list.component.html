@@ -1,0 +1,47 @@
+<br>
+<table align = "center" > 
+    <tbody>
+    <tr>
+        <td>
+            <b>Enter Your Registered Email: </b>
+        </td>
+        <td>
+            <input type = "text" [(ngModel)] = "email">
+        </td>
+        <td>
+            <button class = "btn btn-success" (click) = "getByEmail()"> Search</button>
+        </td>
+    </tr>
+</tbody>
+</table>
+<br>
+<br>
+
+<h3 align = "center" *ngIf = "showData" style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;">Ticket Details</h3><br>
+<table class = table *ngIf = "showData">
+    <tr> 
+        <th>PNR Number</th>
+        <th>Flight Number</th>
+        <th>Booked User Name</th>
+        <th>Email</th>
+        <th>No Of Seats</th>
+        <th>Passengers</th>
+        <th>Fare</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor = "let book of book">
+        <td>{{book.pnrNumber}}</td>
+        <td>{{book.flightId}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.email}}</td>
+        <td>{{book.no_of_seats}}</td>
+        <td>{{book.passengers}}</td>
+        <td>{{book.fare}}</td>
+        <td>{{book.bookStatus}}</td>
+    </tr>
+</table>
+<br><br>
+<h3 align = " center" *ngIf= "noTicketMsg" style="color: red;">No Tickets Found </h3>
+
+<!-- *ngIf = "book.no_of_seats!=0" -->
+

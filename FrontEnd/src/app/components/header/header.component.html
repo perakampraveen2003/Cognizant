@@ -1,0 +1,33 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <ul class = navbar-nav>
+            <li>
+            <a routerLink="/home" class = nav-link><b>Home</b></a>
+            </li><br>
+            <li>
+               <a routerLink="guest/search" class = nav-link><b>Search</b></a>
+            </li><br>
+            <li>
+               <a routerLink ="guest/mytickets" class = nav-link><b>My Tickets</b></a>
+            </li>
+            <li>
+                <a routerLink ="guest/ticketlist" class = nav-link><b>Tickets List</b></a>
+             </li>
+        </ul>
+        <ul class = "navbar-nav navbar-collapse justify-content-end">
+            <li >
+                <a routerLink ="admin/home" class = nav-link *ngIf = "isLoggedIn()"><b>Admin Home</b></a>
+             </li>
+             <li >
+                <a routerLink ="admin/view-flights" class = nav-link *ngIf = "isLoggedIn()"><b>View Flights</b></a>
+             </li>
+            <li >
+               <a routerLink ="admin/login" class = nav-link *ngIf = "!isLoggedIn()"><b>Admin Login</b></a>
+            </li>
+            <li >
+                <a href ="admin/log-out" class = nav-link *ngIf = "isLoggedIn()"><b>Admin Logout</b></a>
+             </li>
+        </ul>
+    </nav>
+</header>
+

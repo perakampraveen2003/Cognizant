@@ -1,0 +1,78 @@
+<br>
+<table align = "center">
+    <tbody>
+    <tr>
+        <td>
+            <b>Enter PNR:</b> 
+        </td>
+        <td>
+            <input type = "text" [(ngModel)] = "pnr">
+        </td>
+        <td>
+            <button class = "btn btn-success" (click) = "getByPNR()"> Search</button>
+        </td>
+    </tr>
+</tbody>
+</table>
+<br><br>
+
+<h3 *ngIf = "showData" style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;" align = "center">Ticket Details</h3><br>
+<table class = table *ngIf = "showData"  id="pdfTable" #pdfTable>
+    <tr> 
+        <th>PNR Number</th>
+        <th>Flight Number</th>
+        <th>Booked User Name</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Passengers</th>
+        <th>Fare</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>{{book.pnrNumber}}</td>
+        <td>{{book.flightId}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.email}}</td>
+        <td>{{book.arivalDate}}</td>
+        <td>{{book.arivalTime}}</td>
+        <td>{{book.passengers}}</td>
+        <td>{{book.fare}}</td>
+        <td>{{book.bookStatus}}</td>
+        <td><button  class = "btn btn-success" (click) = "cancel(book.pnrNumber)" [disabled]="disableButton">Cancel</button></td>
+        <td><button class = "btn btn-success" [disabled]="disableButton" (click)="SavePDF()" >Download</button></td>
+    </tr>
+</table>
+<br><br>
+<h3 align = " center" *ngIf= "noPNRMsg" style="color: red;">No Tickets Found with PNR entered</h3>
+
+<!-- <table>
+    <tr>
+        <td>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="dateOfBirth">Date of birth</label>
+                      <div class="input-group">
+                        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                </div>
+              </ng-template>
+              
+              <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+              
+              <hr>
+        </td>
+    </tr>
+</table> -->

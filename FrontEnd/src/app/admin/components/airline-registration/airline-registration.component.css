@@ -1,0 +1,9 @@
+.alert{
+    color: red;
+}
+#id1{
+    border-radius: 15px;
+    padding: 20px; 
+    width: 250px;
+    height: 0px;
+}

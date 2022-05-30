@@ -1,0 +1,32 @@
+
+<br><h1 align="center" style="color:darkgoldenrod; font-family: Georgia, 'Times New Roman', Times, serif;"> Below are the flights available</h1>
+<br><br><br>
+<table class="table">
+    <tr>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>From Place</th>
+        <th>To Place</th>
+        <th>Start Date</th>
+        <th>Start Time</th>
+        <th>Schedule</th>
+        <th>Ticket Price</th>
+        <th>Meal Type</th>
+        <th>Block Status</th>
+    </tr>
+    <tr *ngFor="let f of flights">
+        <td>{{f.flightNumber}}</td>
+        <td>{{f.airline.airlineName}}</td>
+        <td>{{f.fromPlace}}</td>
+        <td>{{f.toPlace}}</td>
+        <td>{{f.startDate}}</td>
+        <td>{{f.startTime}}</td>
+        <td>{{f.schedule}}</td>
+        <td>{{f.ticketPrice}}</td>
+        <td>{{f.mealType}}</td>
+        <td *ngIf=!f.airline.blockedStatus>Available</td>
+        <td *ngIf=f.airline.blockedStatus>Blocked</td>
+        <td><button (click) = deleteFlight(f.flightNumber) style ="background-color: red;" class="btn btn-success">Delete</button></td>
+    </tr>
+
+</table>
