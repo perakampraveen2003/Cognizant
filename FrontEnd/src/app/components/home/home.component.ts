@@ -17,15 +17,15 @@ export class HomeComponent implements OnInit {
        responseType : 'text'
     }
   
-      this.httpCLient.get<any>("https://6gtcmm2cz2.execute-api.us-west-2.amazonaws.com/default/2183473Test",options).subscribe(
-      resp=>{
-        if(HomeComponent.showMsg)
-        {
-          alert(resp);
-          HomeComponent.showMsg=false;
-        }
-      }
-    )
+    //   this.httpCLient.get<any>("https://6gtcmm2cz2.execute-api.us-west-2.amazonaws.com/default/2183473Test",options).subscribe(
+    //   resp=>{
+    //     if(HomeComponent.showMsg)
+    //     {
+    //       alert(resp);
+    //       HomeComponent.showMsg=false;
+    //     }
+    //   }
+    // )
   }
 
 }
